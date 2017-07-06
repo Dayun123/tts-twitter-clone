@@ -27,6 +27,10 @@ two: {}
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  username               :string
+#  bio                    :text
+#  location               :string
 #
 # Indexes
 #
