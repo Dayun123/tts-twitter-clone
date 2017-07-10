@@ -1,2 +1,16 @@
-<h1>Tweets#show</h1>
-<p>Find me in app/views/tweets/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User: <%= @tweet.user.username %></strong>
+</p>
+
+<p>
+  <strong>Message: <%= @tweet.message %></strong>
+</p>
+
+<p>
+  <strong>Created at: <%= @tweet.created_at %></strong>
+</p>
+
+<%= link_to 'Edit', edit_tweet_path(@tweet), class: 'btn btn-sm btn-default' %>
+<%= link_to 'Back to Feed', tweets_path, class: 'btn btn-sm btn-default' %>
