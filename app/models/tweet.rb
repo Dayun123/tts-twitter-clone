@@ -1,5 +1,9 @@
 class Tweet < ApplicationRecord
   belongs_to :user
+
+  validates :message, presence: true, length: { maximum: 140, message: 'Max tweet length is 140 characters' }
+  validates :user_id, presence: { message: 'Invalid user id' }
+  validates :user, presence: { message: 'must exist!' }
 end
 
 # == Schema Information
