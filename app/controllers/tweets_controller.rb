@@ -7,6 +7,8 @@ class TweetsController < ApplicationController
   end
 
   def new
+    @user = User.new
+    @tweet = Tweet.new(user: @user)
   end
 
   def edit
