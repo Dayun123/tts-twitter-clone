@@ -21,7 +21,5 @@ namespace :db do
         tweet.save
       end
     end
-
   end
-
 end

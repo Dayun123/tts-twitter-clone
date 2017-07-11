@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :inverse_relationships, class_name: "Relationship"
   has_many :inverse_friends, through: :inverse_relationships, source: :user
 
-
-
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
 
