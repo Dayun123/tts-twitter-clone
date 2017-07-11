@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
+  has_many :likes
+
   # Person who follows (current logged in user)
   has_many :relationships
   has_many :friends, through: :relationships
