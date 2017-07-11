@@ -7,8 +7,7 @@ class LikesController < ApplicationController
     @tweet.likes.where(user_id: current_user.id).first_or_create
 
     respond_to do |format|
-      format.html { redirect_to request.referrer }
-
+      format.html { redirect_to request.referrer, notice: "You really like me!" }
     end
   end
 
