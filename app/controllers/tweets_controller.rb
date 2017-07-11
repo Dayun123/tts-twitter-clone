@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:update, :edit, :show, :destroy]
+  before_action :set_tweet, only: [:update, :edit, :destroy]
 
   def index
     @tweets = Tweet.order(:created_at)
@@ -38,6 +38,7 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @tweet = Tweet.find(params[:id])
   end
 
   def destroy
