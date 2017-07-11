@@ -18,6 +18,8 @@
     <%= f.text_field :message, class: 'form-control' %>
   </div>
 
+  <%# Removed the hidden field for current_user.id and put that sort of logic in the tweets controller by utilizing associtions. %>
+
   <div class="actions form-group">
     <%= f.submit class: 'btn btn-sm btn-danger' %>
   </div>

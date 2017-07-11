@@ -3,10 +3,12 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tweet, only: [:update, :edit, :destroy]
 
+  # Set the @tweets instance variable to be the all tweets, with the most recent tweets first.
   def index
     @tweets = Tweet.order(:created_at)
   end
 
+  # Associate the new tweet with the current_user, this will be done in most of the actions.
   def new
     @tweet = current_user.tweets.new
   end
@@ -37,6 +39,7 @@ class TweetsController < ApplicationController
     end
   end
 
+  # Don't associate showing a tweet with the current user, all users should be able to view all tweets.
   def show
     @tweet = Tweet.find(params[:id])
   end
@@ -47,7 +50,7 @@ class TweetsController < ApplicationController
       if @tweet.destroy
         format.html { redirect_to tweets_url, notice: 'Tweet deleted successfully' }
       else
-        format.html { render :index, notice: 'Uh ohhh'}
+        format.html { render :index }
       end
     end
   end
@@ -58,6 +61,7 @@ class TweetsController < ApplicationController
       params.require(:tweet).permit(:message, :user_id)
     end
 
+    # Set the current tweet but restrict it to be a tweet that the current user has created. TODO: Add error handling to this.
     def set_tweet
       @tweet = current_user.tweets.find(params[:id])
     end

@@ -12,6 +12,7 @@
   <strong>Created at: <%= @tweet.created_at %></strong>
 </p>
 
+<%# The edit button should only appear on the current user's tweets. %>
 <% if current_user.id == @tweet.user_id %>
   <%= link_to 'Edit', edit_tweet_path(@tweet), class: 'btn btn-sm btn-default' %>
 <% end -%>
