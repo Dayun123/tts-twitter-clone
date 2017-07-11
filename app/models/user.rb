@@ -1,10 +1,20 @@
 class User < ApplicationRecord
-  has_many :tweets, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :tweets, dependent: :destroy
+
+  # Person who follows (current logged in user)
+  has_many :relationships
+  has_many :friends, through: :relationships
+
+  # Person being followed
+  has_many :inverse_relationships, class_name: "Relationship"
+  has_many :inverse_friends, through: :inverse_relationships, source: :user
+
+
 
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
