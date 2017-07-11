@@ -8,11 +8,11 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet = Tweet.new
+    @tweet = current_user.tweets.new
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.new(tweet_params)
 
     respond_to do |format|
       if @tweet.save
@@ -58,7 +58,7 @@ class TweetsController < ApplicationController
     end
 
     def set_tweet
-      @tweet = Tweet.find(params[:id])
+      @tweet = current_user.tweets.find(params[:id])
     end
 
 end
