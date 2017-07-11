@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
+  has_many :likes
+
   # Person who follows (current logged in user)
   has_many :relationships
   has_many :friends, through: :relationships
@@ -16,6 +18,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
+
+  def likes?(tweet)
+    tweet.likes.where(user_id: id).any?
+  end
 
 end
 

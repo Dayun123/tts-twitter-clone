@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>User: <%= @tweet.user.username %></strong>
 </p>
@@ -11,6 +9,8 @@
 <p>
   <strong>Created at: <%= @tweet.created_at %></strong>
 </p>
+
+<%= render 'shared/likes' %>
 
 <%# The edit button should only appear on the current user's tweets. %>
 <% if current_user.id == @tweet.user_id %>
