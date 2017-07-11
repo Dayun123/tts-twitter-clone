@@ -15,7 +15,10 @@ namespace :db do
         )
       user.save!
       (rand(4) + 3).times do
-        Tweet.create(user_id: user.id, message: Faker::Hipster.sentence(rand(3) + 1))
+        tweet = Tweet.create(user_id: user.id, message: Faker::Hipster.sentence(rand(3) + 1))
+        # Change the created_at time to something random so that when we order the tweets they will be randomized between users.
+        tweet.created_at = Time.now + rand(100_000)
+        tweet.save
       end
     end
 

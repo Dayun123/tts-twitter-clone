@@ -16,6 +16,7 @@
         <td><%= tweet.message %></td>
         <td><%= tweet.user.username %></td>
         <td><%= link_to 'Show', tweet %></td>
+        <%# We only allow the current_user to edit and destroy their own tweets %>
         <% if tweet.user_id == current_user.id %>
           <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
           <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
